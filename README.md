@@ -1,4 +1,4 @@
-Backend Assignment - JSON group by and Sort By Operators
+Backend - JSON group by and Sort By Operators
 
 Overview:
 This is a Spring Boot application that provides JSON processing APIs with group-by and sort-by operators.
