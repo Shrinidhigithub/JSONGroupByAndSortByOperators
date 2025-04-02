@@ -8,7 +8,7 @@ Tech Stack:
 Backend: Java, Spring Boot, Spring Data JPA
 Database: H2 (for tests), MySQL (for production)
 API Documentation: OpenAPI (Springdoc)
-Testing: JUnit
+Testing: JUnit and Postman
 
 Features:
 Insert JSON records into a database
