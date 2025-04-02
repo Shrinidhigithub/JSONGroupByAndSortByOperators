@@ -38,6 +38,142 @@ mvn test OR Right Click On Class Run - for Testing
 Run as JsonOperatorsApplication - for Local/Production
 
 Document : http://localhost:8080/api-docs
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "OpenAPI definition",
+        "version": "v0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "description": "Generated server url"
+        }
+    ],
+    "paths": {
+        "/api/dataset/{datasetName}/record": {
+            "post": {
+                "tags": [
+                    "dataset-controller"
+                ],
+                "operationId": "insertRecord",
+                "parameters": [
+                    {
+                        "name": "datasetName",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DatasetRecordDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/dataset/{datasetName}/query": {
+            "get": {
+                "tags": [
+                    "dataset-controller"
+                ],
+                "operationId": "queryDataset",
+                "parameters": [
+                    {
+                        "name": "datasetName",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "groupBy",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "DatasetRecordDTO": {
+                "required": [
+                    "jsonData"
+                ],
+                "type": "object",
+                "properties": {
+                    "datasetName": {
+                        "type": "string"
+                    },
+                    "jsonData": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 API Endpoints:
 Method: POST	                  
